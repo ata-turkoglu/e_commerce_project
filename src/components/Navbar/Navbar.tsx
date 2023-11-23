@@ -1,9 +1,19 @@
 import React from "react";
+import "./Navbar.css";
 import { Link } from "react-router-dom";
 import { ShoppingCart } from "lucide-react";
-import "./Navbar.css";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../../store/store";
+import { changeCartModalState } from "../../store/reducers/commonStates";
+import CartModal from "../CartModal/CartModal";
+import { amountOfCartItem } from "../../store/reducers/cart";
 
 function Navbar() {
+    const dispatch = useDispatch<AppDispatch>();
+    const cartModalState = useSelector(
+        (state: RootState) => state.commonStatesSlice.cartModalState
+    );
+    const aamountOfCartItem = useSelector(amountOfCartItem);
     return (
         <div id="navbar">
             <ul className="nav nav-underline">
@@ -24,10 +34,19 @@ function Navbar() {
                 </li>
             </ul>
             <ul className="nav nav-underline">
-                <li className="nav-item">
-                    <ShoppingCart strokeWidth={3} />
+                <li
+                    className="nav-item"
+                    onClick={() => dispatch(changeCartModalState())}
+                >
+                    <div className="cart-item">
+                        <ShoppingCart strokeWidth={3} />
+                        <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill cart-badge">
+                            {aamountOfCartItem}
+                        </span>
+                    </div>
                 </li>
             </ul>
+            {cartModalState && <CartModal />}
         </div>
     );
 }

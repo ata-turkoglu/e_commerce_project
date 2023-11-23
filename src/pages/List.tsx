@@ -10,7 +10,9 @@ function ProductList() {
         (state: RootState) => state.productsSlice.products
     );
 
-    console.log("list", products);
+    useEffect(() => {
+        console.log("list", products);
+    }, []);
 
     let productComponents = products.map((product: Product) => (
         <ProductCard key={product.id} product={product} />
