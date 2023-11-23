@@ -1,0 +1,36 @@
+.productCard{
+    width: 350px;
+    max-height: 700px;
+    margin-bottom: 2rem;
+    overflow: hidden;
+}
+
+.productImg{
+    width: 100%;
+    height: 300px;
+    padding: 1rem;
+}
+
+.productImg img{
+    width: 100%;
+    height: 100%;
+    object-fit:contain;
+}
+
+.productInfo{
+    height:200px;
+    overflow: auto;
+}
+
+.productPrice{
+    font-size: 1.3rem;
+}
+
+.addToCartBtn{
+    width: 100%;
+    height: 100%;
+    background-color:whitesmoke;
+    font-weight: 700;
+    color:navy;
+    font-size: 1.1rem;
+}
