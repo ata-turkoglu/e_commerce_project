@@ -13,13 +13,13 @@ function Navbar() {
     const cartModalState = useSelector(
         (state: RootState) => state.commonStatesSlice.cartModalState
     );
-    const aamountOfCartItem = useSelector(amountOfCartItem);
+    const cartItemCount = useSelector(amountOfCartItem);
     return (
         <div id="navbar">
             <ul className="nav nav-underline">
                 <li className="nav-item">
                     <Link className="nav-link" to="/">
-                        List
+                        Product List
                     </Link>
                 </li>
                 <li className="nav-item">
@@ -40,8 +40,8 @@ function Navbar() {
                 >
                     <div className="cart-item">
                         <ShoppingCart strokeWidth={3} />
-                        <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill cart-badge">
-                            {aamountOfCartItem}
+                        <span className="position-absolute start-100 translate-middle badge rounded-pill cart-badge">
+                            {cartItemCount}
                         </span>
                     </div>
                 </li>
