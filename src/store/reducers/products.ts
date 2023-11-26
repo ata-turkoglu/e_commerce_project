@@ -7,7 +7,7 @@ import {
 import { RootState } from "../store";
 import axios from "axios";
 
-const api = "https://fakestoreapi.com";
+const api = process.env.REACT_APP_API_KEY;
 
 export interface Product {
     id: number;
@@ -22,12 +22,12 @@ export interface Product {
     };
 }
 
-export interface Products {
+export interface initialState {
     products: Product[];
     categories: String[];
 }
 
-const initialState: Products = {
+const initialState: initialState = {
     products: [],
     categories: [],
 };

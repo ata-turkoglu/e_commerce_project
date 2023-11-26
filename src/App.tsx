@@ -4,6 +4,7 @@ import "./App.css";
 import Navbar from "./components/Navbar/Navbar";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "./store/reducers/products";
+import { fetchUsers } from "./store/reducers/users";
 import { AppDispatch, RootState } from "./store/store";
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
     useEffect(() => {
         if (products.length <= 0) {
             dispatch(fetchProducts());
+            dispatch(fetchUsers());
         }
     }, []);
     return (
