@@ -19,7 +19,7 @@ function ProductCard({ product }: Props) {
         rating.push(<Star color="gold" fill="gold" />);
     }
     return (
-        <div key={product.id} className="card productCard">
+        <div key={`card-${product.id}`} className="card productCard">
             <div className="productImg">
                 <img src={product.image} className="card-img-top" />
             </div>
