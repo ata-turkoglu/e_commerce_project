@@ -3,9 +3,12 @@ import "./Pages.css";
 import { useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../store/store";
 import ProductCard from "../components/ProductCard/ProductCard";
+import Filter from "../components/Filter/Filter";
 import { Product } from "../store/reducers/products";
+import { Menu } from "lucide-react";
 
 function ProductList() {
+    const [filterVisible, setFilterVisible] = useState<boolean>(false);
     const [selectedCategory, setSelectedCategory] = useState<number | null>(
         null
     );
@@ -39,8 +42,13 @@ function ProductList() {
     );
 
     return (
-        <div className="componentContainer">
+        <div className="listComponentContainer">
             <div className="categories">
+                <Menu
+                    className="me-5"
+                    style={{ cursor: "pointer" }}
+                    onClick={() => setFilterVisible((val) => !val)}
+                />
                 <span
                     className={`cat-item ${
                         selectedCategory == null ? "cat-item-active" : ""
@@ -61,8 +69,11 @@ function ProductList() {
                         </span>
                     ))}
             </div>
-            <div className="ListContainer">
-                {productComponents.length > 0 && productComponents}
+            <div className="mainList">
+                <Filter show={filterVisible} />
+                <div className="ListContainer">
+                    {productComponents.length > 0 && productComponents}
+                </div>
             </div>
         </div>
     );
